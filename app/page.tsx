@@ -6,6 +6,7 @@ import { Search } from './components/search';
 import { ClientsTable } from './components/table';
 
 import type { Client } from './lib/app.types';
+import { OrderBtn } from './components/order-btn';
 
 export default async function IndexPage({
   searchParams
@@ -24,9 +25,10 @@ export default async function IndexPage({
         <Title>Clientes</Title>
         <Text>Lista completa dos nossos clientes</Text>
       </div>
-      <div className="flex items-center justify-start gap-4 w-full">
+      <div className="flex flex-col sm:flex-row  gap-4 w-full">
         <Search />
         <AddClient />
+        <OrderBtn />
       </div>
       <Card>
         <ClientsTable clients={clients} />

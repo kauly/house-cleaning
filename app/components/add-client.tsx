@@ -11,15 +11,24 @@ import toast from 'react-hot-toast';
 
 import { clientSchema } from '@/schemas/client';
 import { HookedInput } from './hooked-input';
+import { HookedNumberInput } from './hooked-number-input';
 
 type FormData = z.infer<typeof clientSchema>;
+const defaultValues: FormData = {
+  name: '',
+  email: '',
+  phone: '',
+  x: 1,
+  y: 1
+};
 
 function AddClient() {
   const [isOpen, setIsOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
   const methods = useForm<FormData>({
-    resolver: zodResolver(clientSchema)
+    resolver: zodResolver(clientSchema),
+    defaultValues
   });
 
   const toggleDialog = () => setIsOpen((p) => !p);
@@ -31,6 +40,7 @@ function AddClient() {
         method: 'POST',
         body: JSON.stringify(data)
       });
+      methods.reset();
       toast.success('Cliente criado com sucesso!');
       toggleDialog();
       router.refresh();
@@ -43,16 +53,15 @@ function AddClient() {
 
   return (
     <FormProvider {...methods}>
-      <div className="text-center">
-        <Button onClick={toggleDialog} icon={PlusIcon}>
-          Novo Cliente
-        </Button>
-      </div>
+      <Button onClick={toggleDialog} icon={PlusIcon}>
+        Novo Cliente
+      </Button>
+
       <Dialog open={isOpen} onClose={toggleDialog} static={true}>
         <DialogPanel className="max-w-sm">
           <Title className="mb-3"> Criar novo cliente</Title>
           <form onSubmit={onSubmit}>
-            <div className="flex flex-col max-w-sm">
+            <div className="flex flex-col max-w-sm pb-2">
               <div className="h-[88px]">
                 <HookedInput
                   name="name"
@@ -73,6 +82,10 @@ function AddClient() {
                   placeholder="Ex: 48994569778"
                   label="Celular"
                 />
+              </div>
+              <div className="h-[88px] flex gap-2">
+                <HookedNumberInput name="x" placeholder="Ex: 1" label="X" />
+                <HookedNumberInput name="y" placeholder="Ex: 2" label="Y" />
               </div>
             </div>
             <Button variant="primary" type="submit" loading={isLoading}>
