@@ -1,62 +1,63 @@
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://user-images.githubusercontent.com/9113740/201498864-2a900c64-d88f-4ed4-b5cf-770bcb57e1f5.png">
-  <source media="(prefers-color-scheme: light)" srcset="https://user-images.githubusercontent.com/9113740/201498152-b171abb8-9225-487a-821c-6ff49ee48579.png">
-  <img alt="Shows all of the tools in the stack for this template, also listed in the README file." src="https://user-images.githubusercontent.com/9113740/201498152-b171abb8-9225-487a-821c-6ff49ee48579.png">
-</picture>
+# House Cleaning
 
-<div align="center"><strong>Next.js 14 Admin Dashboard Template</strong></div>
-<div align="center">Built with the Next.js App Router</div>
-<br />
-<div align="center">
-<a href="http://admin-dash-template.vercel.sh/">Demo</a>
-<span> · </span>
-<a href="https://vercel.com/templates/next.js/admin-dashboard-tailwind-planetscale-react-nextjs">Clone & Deploy</a>
-<span>
-</div>
+An application to management clients and create visit lists.
 
-## Overview
+## Demo
 
-This is a starter template using the following stack:
+https://house-cleaning.vercel.app/
 
-- Framework - [Next.js 14](https://nextjs.org/14)
-- Language - [TypeScript](https://www.typescriptlang.org)
-- Auth - [NextAuth.js](https://next-auth.js.org)
-- Database - [Vercel Postgres](https://vercel.com/postgres)
-- Deployment - [Vercel](https://vercel.com/docs/concepts/next.js/overview)
-- Styling - [Tailwind CSS](https://tailwindcss.com)
-- Components - [Tremor](https://www.tremor.so)
-- Analytics - [Vercel Analytics](https://vercel.com/analytics)
-- Linting - [ESLint](https://eslint.org)
-- Formatting - [Prettier](https://prettier.io)
+## About
 
-This template uses the new Next.js App Router. This includes support for enhanced layouts, colocation of components, tests, and styles, component-level data fetching, and more.
+This application was bootstrapped using the (Next.js 14 Admin Dashboard Template)[https://github.com/vercel/nextjs-postgres-nextauth-tailwindcss-template] that's, by the way, pretty good. I'm using the (Vercel Postgres)[https://vercel.com/docs/storage/vercel-postgres] and also Route Handlers so to run this project locally, the best thing to do is clone it and create a Vercel project. In my opinion, Nextjs projects outside off Vercel are trouble, definetlly a downside since Vercel is expensive for teams but as this projects shows one can quickly create a decent application using it. It's easy to setup Posgres on Vercel, just follow the (Quickstart)[https://vercel.com/docs/storage/vercel-postgres/quickstart].
 
-## Getting Started
+### Steps to run the project
 
-During the deployment, Vercel will prompt you to create a new Postgres database. This will add the necessary environment variables to your project.
+- Clone this repo: `git clone https://github.com/kauly/house-cleaning.git`
+- Install the project dependencies: `pnpm i`
+- Create a Vercel project and follow the Quickstart to tie a Postgres database to it.
+- Create the `clients` table calling this endpoint: `GET /api/create-clients-table`
+- You are done.
 
-Inside the Vercel Postgres dashboard, create a table based on the schema defined in this repository.
+## Client Data Model
 
-```
-CREATE TABLE users (
-  id SERIAL PRIMARY KEY,
-  email VARCHAR(255) NOT NULL,
-  name VARCHAR(255),
-  username VARCHAR(255)
-);
-```
+Shows the following for clients:
 
-Insert a row for testing:
+- In the API level, in services, and in the UI
+- How clients are persisted in the DB
+- A system architecture overview
 
-```
-INSERT INTO users (id, email, name, username) VALUES (1, 'me@site.com', 'Me', 'username');
+---
+
+## App & Services Representation
+
+This is what the services / API return:
+
+![App Representation: Client](./docs/app-representation:-client-export-1-25-2024-11_49_35-AM.png)
+
+Typescript:
+
+```typescript
+export type Client = {
+  id: string;
+  name: string;
+  email: string;
+  phone: string;
+  x: number;
+  y: number;
+  distance?: number;
+};
 ```
 
-Finally, run the following commands to start the development server:
+## DB Representation
 
-```
-pnpm install
-pnpm dev
-```
+![DB Representation](./docs/db-representation-export-1-25-2024-11_49_35-AM.png)
 
-You should now be able to access the application at http://localhost:3000.
+> **Note: ** In almost all cases, you should not be directly accessing the DB. Use the our services instead.
+
+---
+
+## Services
+
+Overview of accessing the API from a client app:
+
+![APIs and Services](./docs/apis-and-services-export-1-25-2024-11_49_36-AM.png)
