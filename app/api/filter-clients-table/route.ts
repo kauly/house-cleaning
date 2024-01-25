@@ -1,3 +1,5 @@
+export const runtime = 'edge';
+
 import { sql } from '@vercel/postgres';
 import { NextRequest } from 'next/server';
 
