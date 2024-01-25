@@ -1,6 +1,6 @@
 import { Navbar } from './navbar';
 
-function Nav() {
+async function Nav() {
   return <Navbar />;
 }
 
