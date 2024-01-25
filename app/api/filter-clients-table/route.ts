@@ -1,5 +1,5 @@
 import { sql } from '@vercel/postgres';
-import { NextRequest, NextResponse } from 'next/server';
+import { NextRequest } from 'next/server';
 
 async function GET(request: NextRequest) {
   try {
@@ -9,9 +9,9 @@ async function GET(request: NextRequest) {
       '%' + q + '%'
     } OR email LIKE ${'%' + q + '%'} OR phone LIKE ${'%' + q + '%'}`;
 
-    return NextResponse.json({ result }, { status: 200 });
+    return Response.json({ result }, { status: 200 });
   } catch (error) {
-    return NextResponse.error();
+    return Response.error();
   }
 }
 

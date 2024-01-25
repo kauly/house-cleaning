@@ -1,5 +1,4 @@
 import { sql } from '@vercel/postgres';
-import { NextResponse } from 'next/server';
 
 import { sortByCoord } from '@/lib/sorters';
 
@@ -20,9 +19,9 @@ async function GET() {
     const clients = result.rows as Client[];
     const sorted = sortByCoord(clients);
 
-    return NextResponse.json({ data: sorted });
+    return Response.json({ data: sorted });
   } catch (error) {
-    return NextResponse.error();
+    return Response.error();
   }
 }
 
