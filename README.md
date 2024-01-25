@@ -8,7 +8,7 @@ https://house-cleaning.vercel.app/
 
 ## About
 
-This application was bootstrapped using the (Next.js 14 Admin Dashboard Template)[https://github.com/vercel/nextjs-postgres-nextauth-tailwindcss-template] that's, by the way, pretty good. I'm using the (Vercel Postgres)[https://vercel.com/docs/storage/vercel-postgres] and also Route Handlers so to run this project locally, the best thing to do is clone it and create a Vercel project. In my opinion, Nextjs projects outside off Vercel are trouble, definetlly a downside since Vercel is expensive for teams but as this projects shows one can quickly create a decent application using it. It's easy to setup Posgres on Vercel, just follow the (Quickstart)[https://vercel.com/docs/storage/vercel-postgres/quickstart].
+This application was bootstrapped using the [Next.js 14 Admin Dashboard Template](https://github.com/vercel/nextjs-postgres-nextauth-tailwindcss-template) that's, by the way, pretty good. I'm using the [Vercel Postgres](https://vercel.com/docs/storage/vercel-postgres) and also Route Handlers so to run this project locally, the best thing to do is clone it and create a Vercel project. In my opinion, Nextjs projects outside off Vercel are trouble, definitely a downside since Vercel is expensive for teams but as this projects shows one can quickly create a decent application using it. It's easy to setup Postgres on Vercel, just follow the [Quickstart](https://vercel.com/docs/storage/vercel-postgres/quickstart).
 
 ### Steps to run the project
 
