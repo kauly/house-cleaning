@@ -1,7 +1,7 @@
 import { sql } from '@vercel/postgres';
 import { NextResponse } from 'next/server';
 
-export async function GET() {
+async function GET() {
   try {
     await sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
     const result =
@@ -12,3 +12,5 @@ export async function GET() {
     return NextResponse.json({ error }, { status: 500 });
   }
 }
+
+export { GET };

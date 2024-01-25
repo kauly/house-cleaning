@@ -1,13 +1,13 @@
 import './globals.css';
 
-import Nav from './nav';
-import Toast from './toast';
 import { Suspense } from 'react';
+import { Toaster } from 'react-hot-toast';
+
+import { Nav } from './components/nav';
 
 export const metadata = {
-  title: 'Next.js App Router + NextAuth + Tailwind CSS',
-  description:
-    'A user admin dashboard configured with Next.js, Postgres, NextAuth, Tailwind CSS, TypeScript, ESLint, and Prettier.'
+  title: 'House Cleaning',
+  description: 'Aplicação para o gerenciamento de clientes'
 };
 
 export default function RootLayout({
@@ -22,7 +22,7 @@ export default function RootLayout({
           <Nav />
         </Suspense>
         {children}
-        <Toast />
+        <Toaster />
       </body>
     </html>
   );

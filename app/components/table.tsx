@@ -8,32 +8,27 @@ import {
   Text
 } from '@tremor/react';
 
-interface User {
-  id: number;
-  name: string;
-  username: string;
-  email: string;
-}
+import type { Client } from '../lib/app.types';
 
-export default function UsersTable({ users }: { users: User[] }) {
+function ClientsTable({ clients = [] }: { clients: Client[] }) {
   return (
     <Table>
       <TableHead>
         <TableRow>
           <TableHeaderCell>Name</TableHeaderCell>
-          <TableHeaderCell>Username</TableHeaderCell>
           <TableHeaderCell>Email</TableHeaderCell>
+          <TableHeaderCell>Phone</TableHeaderCell>
         </TableRow>
       </TableHead>
       <TableBody>
-        {users.map((user) => (
+        {clients.map((user) => (
           <TableRow key={user.id}>
             <TableCell>{user.name}</TableCell>
             <TableCell>
-              <Text>{user.username}</Text>
+              <Text>{user.email}</Text>
             </TableCell>
             <TableCell>
-              <Text>{user.email}</Text>
+              <Text>{user.phone}</Text>
             </TableCell>
           </TableRow>
         ))}
@@ -41,3 +36,5 @@ export default function UsersTable({ users }: { users: User[] }) {
     </Table>
   );
 }
+
+export { ClientsTable };

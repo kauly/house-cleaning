@@ -1,5 +1,3 @@
-import { NextApiRequest } from 'next';
-
 export type Client = {
   id: string;
   name: string;

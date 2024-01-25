@@ -5,16 +5,13 @@ import { Disclosure, Menu } from '@headlessui/react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import Image from 'next/image';
 
-const navigation = [
-  { name: 'Dashboard', href: '/' },
-  { name: 'Playground', href: '/playground' }
-];
+const navigation = [{ name: 'Clientes', href: '/' }];
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ');
 }
 
-export default function Navbar() {
+function Navbar() {
   const pathname = usePathname();
 
   return (
@@ -119,3 +116,5 @@ export default function Navbar() {
     </Disclosure>
   );
 }
+
+export { Navbar };
